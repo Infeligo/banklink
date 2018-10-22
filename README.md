@@ -1,3 +1,5 @@
+**:rotating_light: This fork is currently WIP and will undergo major [changes](CHANGES.md)! :rotating_light:**
+
 Banklink library
 ============================
 
@@ -32,7 +34,3 @@ The standard iPizza protocol specification v1.1 can be found [here](https://medi
 | SEB | [Technical specification](https://www.seb.ee/ariklient/igapaevapangandus/maksete-kogumine/maksete-kogumine-internetis/pangalingi-tehniline-spetsifikatsioon) |
 | Swedbank | [Technical specification](https://www.swedbank.ee/static/pdf/business/d2d/paymentcollection/Pangalingi_paringute_tehniline_spetsifikatsioon_09_10_2014.pdf) |
 
-Example implementation
-------------
-
-Please refer to the [**example project**](example/README) for reference implementation.
