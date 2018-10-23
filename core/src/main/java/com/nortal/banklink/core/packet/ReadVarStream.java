@@ -19,8 +19,6 @@ import java.io.InputStream;
 
 import org.apache.log4j.Logger;
 
-import com.nortal.banklink.core.Version;
-
 // TODO: Auto-generated Javadoc
 /**
  * The Class ReadVarStream.
@@ -79,7 +77,7 @@ final class ReadVarStream extends Thread {
             }
             done = 1;
         } catch (Exception ex) {
-            LOG.error("Banklink " + Version.version + ": unable to read - ", ex);
+            LOG.error("Banklink: unable to read - ", ex);
         }
     }
 

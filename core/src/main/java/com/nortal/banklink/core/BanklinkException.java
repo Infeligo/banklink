@@ -38,7 +38,7 @@ public class BanklinkException extends RuntimeException {
      *            the detail message.
      */
     public BanklinkException(String msg) {
-        super("Banklink " + Version.version + " cause: " + msg);
+        super("Banklink cause: " + msg);
     }
 
     /**
@@ -51,6 +51,6 @@ public class BanklinkException extends RuntimeException {
      *            the ex
      */
     public BanklinkException(String msg, Throwable ex) {
-        super(msg + " Banklink " + Version.version + " cause: " + ex.getMessage() + ".", ex);
+        super(msg + " Banklink cause: " + ex.getMessage() + ".", ex);
     }
 }

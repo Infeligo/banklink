@@ -16,7 +16,6 @@
 package com.nortal.banklink.core.packet;
 
 import com.nortal.banklink.core.BanklinkException;
-import com.nortal.banklink.core.Version;
 import com.nortal.banklink.core.algorithm.Algorithm;
 import com.nortal.banklink.core.log.PacketForwardLog;
 import com.nortal.banklink.core.log.PacketLog;
@@ -502,7 +501,7 @@ public class Packet {
 
             if (tryMake.done == 0) {
                 remoteServer.close();
-                throw new IOException("Banklink " + Version.version + ": can not make handshakes.");
+                throw new IOException("Banklink : can not make handshakes.");
             }
 
             PrintWriter out = new PrintWriter(new BufferedWriter(new OutputStreamWriter(remoteServer.getOutputStream())));
@@ -590,7 +589,7 @@ public class Packet {
         while (newlinesSeen < 2) {
             int i = in.read();
             if (i < 0) {
-                throw new IOException("Banklink " + Version.version + ": unexpected EOF from proxy.");
+                throw new IOException("Banklink : unexpected EOF from proxy.");
             }
 
             if (i == '\n') {
@@ -608,7 +607,7 @@ public class Packet {
 
         // check if the returned headers is OK.
         if (!replyStr.startsWith("HTTP/1.0 200")) {
-            throw new IOException("Banklink " + Version.version + ": unable to tunnel through proxy." + "Proxy returned \""
+            throw new IOException("Banklink: unable to tunnel through proxy." + "Proxy returned \""
                     + replyStr + "\"");
         }
 
@@ -755,11 +754,11 @@ public class Packet {
             out.close();
 
             if (getServerHeader() == null) {
-                throw new IOException("Banklink " + Version.version + ": server did not return any headers.");
+                throw new IOException("Banklink: server did not return any headers.");
             }
 
             if (getServerHeader().indexOf("200") < 0) {
-                throw new IOException("Banklink " + Version.version + ": server returned error.");
+                throw new IOException("Banklink: server returned error.");
             }
         } catch (Exception e) {
             throw new BanklinkException(e.toString(), e);

@@ -19,7 +19,6 @@ import com.nortal.banklink.core.packet.param.PacketParameter;
 
 import java.nio.charset.Charset;
 import java.util.Enumeration;
-import com.nortal.banklink.core.Version;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -154,7 +153,7 @@ public abstract class Algorithm<SIGKEY, VERKEY> {
             Class<?> cClass = Class.forName("com.nortal.banklink.core.algorithm.Algorithm" + id);
             return (Algorithm<SIGKEY, VERKEY>) cClass.newInstance();
         } catch (Exception ex) {
-            throw new AlgorithmException("Error creating algorithm \"" + id + "\". Banklink " + Version.version + "cause: "
+            throw new AlgorithmException("Error creating algorithm \"" + id + "\". Banklink cause: "
                     + ex.getMessage());
         }
     }
