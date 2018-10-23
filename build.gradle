@@ -9,11 +9,7 @@ buildscript {
 	}
 }
 
-apply plugin: 'eclipse'
-
-
 subprojects {
-    apply from: "${rootDir}/scripts/eclipse.gradle"
     apply from: "${rootDir}/scripts/banklink.gradle"
     apply from: "${rootDir}/scripts/osgi.gradle"
     apply from: "${rootDir}/scripts/maven.gradle"
