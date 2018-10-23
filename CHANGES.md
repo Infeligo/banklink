@@ -8,3 +8,7 @@
 - Removed Eclipse IDE files from the project.
 
 - Removed `Version` holder class. 
+
+- Removed code related to sending packet via HTTP(S). While this is necessary functionality, it really
+  should be implemented in another place and actual HTTP call should be handled by a pluggable client
+  like Apache HTTP client or RestTemplate. 
