@@ -1,3 +1,0 @@
-jar.manifest {
-	attributes 'Fragment-Host': 'com.nortal.banklink.core'
-}

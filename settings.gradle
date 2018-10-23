@@ -2,10 +2,6 @@ rootProject.name = 'banklink'
 
 include 'core', 'link', 'authentication', 'payment' 
 
-//include 'spec-lv', 
-include 'authentication-lv'
-include 'authentication-lt'
-
 rootProject.children.each { it ->
     it.name = 'banklink-' + it.name
 }
