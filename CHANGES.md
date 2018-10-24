@@ -14,3 +14,5 @@
   like Apache HTTP client or RestTemplate. 
 
 - Replaced `Enumeration` occurrences with `List`.
+
+- Removed OSGI related Gradle stuff.
