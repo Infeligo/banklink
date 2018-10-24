@@ -16,3 +16,5 @@
 - Replaced `Enumeration` occurrences with `List`.
 
 - Removed OSGI related Gradle stuff.
+
+- Removed obscure dependency DSL, use out-of-the-box dependency declaration capabilities. 

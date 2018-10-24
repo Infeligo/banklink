@@ -1,11 +1,11 @@
 dependencies {
-    compile lib('javax.servlet','javax.servlet-api','3.0.1')
-    compile lib('org.apache.logging.log4j','log4j-1.2-api','2.11.0')
+    compile group: 'javax.servlet', name: 'javax.servlet-api', version: '3.0.1'
+    compile group: 'org.apache.logging.log4j', name: 'log4j-1.2-api', version: '2.11.0'
 
-    compile commons('logging','1.2')
-    compile commonsA('lang3', '3.7')
-    compile commonsA('collections4','4.1')
-    compile commons('io','2.6')
-    compile commons('validator','1.6')
-    compile commons('codec','1.11')
+    compile group: 'commons-logging', name: 'commons-loggging', version: '1.2'
+    compile group: 'commons-io', name: 'commons-io', version: '2.6'
+    compile group: 'commons-validator', name: 'commons-validator', version: '1.6'
+    compile group: 'commons-codec', name: 'commons-codec', version: '1.11'
+    compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.7'
+    compile group: 'org.apache.commons', name: 'commons-collections4', version: '4.1'
 }
