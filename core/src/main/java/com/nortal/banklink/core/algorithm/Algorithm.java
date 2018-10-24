@@ -18,7 +18,7 @@ package com.nortal.banklink.core.algorithm;
 import com.nortal.banklink.core.packet.param.PacketParameter;
 
 import java.nio.charset.Charset;
-import java.util.Enumeration;
+import java.util.List;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -49,30 +49,30 @@ public abstract class Algorithm<SIGKEY, VERKEY> {
      * used.
      * 
      * @param parameters
-     *            enumeration of packet parameters that must be signed or verified
+     *            list of packet parameters that must be signed or verified
      * @return values of all packet parameters that must be in MAC and their
      *         length (see for example 008 spec.)
      * @throws AlgorithmException
      *             the algorithm exception
      */
-    public abstract String getMacString(Enumeration<PacketParameter> parameters) throws AlgorithmException;
+    public abstract String getMacString(List<PacketParameter> parameters) throws AlgorithmException;
 
     /**
      * Signature of specified packet parameters.
      * 
      * @param parameters
-     *            enumeration of packet parameters to sign
+     *            list of packet parameters to sign
      * @return signature of packet parameters
      * @throws AlgorithmException
      *             the algorithm exception
      */
-    public abstract String sign(Enumeration<PacketParameter> parameters) throws AlgorithmException;
+    public abstract String sign(List<PacketParameter> parameters) throws AlgorithmException;
 
     /**
      * Check if the signature if correct or not.
      * 
      * @param parameters
-     *            enumeration of packet parameters that will be used for verifying
+     *            list of packet parameters that will be used for verifying
      *            signature
      * @param MAC
      *            the mac
@@ -80,7 +80,7 @@ public abstract class Algorithm<SIGKEY, VERKEY> {
      * @throws AlgorithmException
      *             the algorithm exception
      */
-    public abstract boolean verify(Enumeration<PacketParameter> parameters, String MAC) throws AlgorithmException;
+    public abstract boolean verify(List<PacketParameter> parameters, String MAC) throws AlgorithmException;
 
     /**
      * 

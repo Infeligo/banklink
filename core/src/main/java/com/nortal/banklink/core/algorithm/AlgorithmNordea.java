@@ -20,7 +20,7 @@ import com.nortal.banklink.core.packet.param.PacketParameter;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.Enumeration;
+import java.util.List;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -37,18 +37,10 @@ public final class AlgorithmNordea extends Algorithm<String, String> {
     public AlgorithmNordea() {
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see
-     * com.nortal.banklink.core.algorithm.Algorithm#getMacString(java.util.Enumeration
-     * )
-     */
     @Override
-    public String getMacString(Enumeration<PacketParameter> parameters) throws AlgorithmException {
+    public String getMacString(List<PacketParameter> parameters) throws AlgorithmException {
         StringBuffer sToSign = new StringBuffer();
-        while (parameters.hasMoreElements()) {
-            PacketParameter param = parameters.nextElement();
+        for (PacketParameter param : parameters) {
             if (param.isMac()) {
                 if (param.getValue() == null || "".equals(param.getValue())) {
                     /*
@@ -70,14 +62,8 @@ public final class AlgorithmNordea extends Algorithm<String, String> {
         return sToSign.toString();
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see
-     * com.nortal.banklink.core.algorithm.Algorithm#sign(java.util.Enumeration)
-     */
     @Override
-    public String sign(Enumeration<PacketParameter> parameters) throws AlgorithmException {
+    public String sign(List<PacketParameter> parameters) throws AlgorithmException {
         try {
             return MD5encrypt(getMacString(parameters));
         } catch (Exception ex_a) {
@@ -85,15 +71,8 @@ public final class AlgorithmNordea extends Algorithm<String, String> {
         }
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see
-     * com.nortal.banklink.core.algorithm.Algorithm#verify(java.util.Enumeration,
-     * java.lang.String)
-     */
     @Override
-    public boolean verify(Enumeration<PacketParameter> parameters, String MAC) throws AlgorithmException {
+    public boolean verify(List<PacketParameter> parameters, String MAC) throws AlgorithmException {
         try {
             String paramMAC = MD5encrypt(getMacString(parameters));
             return paramMAC.equals(MAC);

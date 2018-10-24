@@ -16,12 +16,13 @@
 package com.nortal.banklink.core.algorithm;
 
 import com.nortal.banklink.core.packet.param.PacketParameter;
+import org.apache.commons.codec.binary.Base64;
+
 import java.nio.charset.Charset;
 import java.security.PrivateKey;
 import java.security.PublicKey;
 import java.security.Signature;
-import java.util.Enumeration;
-import org.apache.commons.codec.binary.Base64;
+import java.util.List;
 
 /**
  * 
@@ -129,17 +130,16 @@ public final class Algorithm008 extends Algorithm<PrivateKey, PublicKey> {
      * </UL>
      * 
      * @param parameters
-     *            enumeration of packet parameters that must be signed or verified.
+     *            list of packet parameters that must be signed or verified.
      * @return values of all PacketParameters which musy be in MAC and their
      *         length (see 008 spec.)
      * @throws AlgorithmException
      *             the algorithm exception
      */
-    public String getMacString(Enumeration<PacketParameter> parameters) throws AlgorithmException {
+    public String getMacString(List<PacketParameter> parameters) throws AlgorithmException {
         StringBuffer sToSign = new StringBuffer();
         // gather all what we need to sign
-        for (Enumeration<PacketParameter> e = parameters; e.hasMoreElements();) {
-            PacketParameter param = e.nextElement();
+        for (PacketParameter param : parameters) {
             if (param.isMac()) {
                 // Ago - is it better to use buffer here ?
                 String length;
@@ -174,12 +174,12 @@ public final class Algorithm008 extends Algorithm<PrivateKey, PublicKey> {
      * algorithm to encrypt this hash.
      * 
      * @param parameters
-     *            enumeration of packet parameters to sign
+     *            list of packet parameters to sign
      * @return signature of packet parameters
      * @throws AlgorithmException
      *             the algorithm exception
      */
-    public String sign(Enumeration<PacketParameter> parameters) throws AlgorithmException {
+    public String sign(List<PacketParameter> parameters) throws AlgorithmException {
         try {
 
             Signature rsa = Signature.getInstance(hashAlgorithm + "withRSA");
@@ -209,7 +209,7 @@ public final class Algorithm008 extends Algorithm<PrivateKey, PublicKey> {
      * Check if the signature if correct or not.
      * 
      * @param parameters
-     *            enumeration of packet parameters that will be used for
+     *            list of packet parameters that will be used for
      * 
      *            verifying signature
      * @param MAC
@@ -218,7 +218,7 @@ public final class Algorithm008 extends Algorithm<PrivateKey, PublicKey> {
      * @throws AlgorithmException
      *             the algorithm exception
      */
-    public boolean verify(java.util.Enumeration<PacketParameter> parameters, String MAC) throws AlgorithmException {
+    public boolean verify(List<PacketParameter> parameters, String MAC) throws AlgorithmException {
         try {
             byte[] decodedMAC = Base64.decodeBase64(MAC);
             Signature rsa = Signature.getInstance(hashAlgorithm + "withRSA");

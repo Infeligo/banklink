@@ -16,11 +16,12 @@
 package com.nortal.banklink.core.packet;
 
 import com.nortal.banklink.core.packet.param.PacketParameter;
-import java.nio.charset.Charset;
-import java.util.Enumeration;
-import java.util.HashMap;
-import java.util.Vector;
+
 import javax.servlet.http.HttpServletRequest;
+import java.nio.charset.Charset;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 /**
  * The Class PacketParameterMap.
@@ -112,15 +113,15 @@ public final class PacketParameterMap extends HashMap<String, PacketParameter> {
     /**
      * Parameters.
      * 
-     * @return the enumeration
+     * @return the list
      */
-    public Enumeration<PacketParameter> parameters() {
-        Vector<PacketParameter> v = new Vector<>();
+    public List<PacketParameter> parameters() {
+        List<PacketParameter> params = new ArrayList<>();
         for (int i = 0; i < size(); i++) {
-            v.add(getPacketParameter(i + 1));
+            params.add(getPacketParameter(i + 1));
         }
 
-        return v.elements();
+        return params;
     }
 
     /**

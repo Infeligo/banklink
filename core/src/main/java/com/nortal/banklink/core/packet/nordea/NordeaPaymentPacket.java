@@ -15,16 +15,14 @@
  */
 package com.nortal.banklink.core.packet.nordea;
 
-import com.nortal.banklink.core.packet.param.PacketParameter;
-
-import java.util.Enumeration;
-import org.apache.log4j.Logger;
 import com.nortal.banklink.core.BanklinkException;
 import com.nortal.banklink.core.algorithm.Algorithm;
 import com.nortal.banklink.core.log.PacketLog;
 import com.nortal.banklink.core.log.PacketSignLog;
 import com.nortal.banklink.core.log.PacketVerifyLog;
 import com.nortal.banklink.core.packet.Packet;
+import com.nortal.banklink.core.packet.param.PacketParameter;
+import org.apache.log4j.Logger;
 
 /**
  * The Class NordeaPaymentPacket.
@@ -60,11 +58,7 @@ public class NordeaPaymentPacket extends Packet {
 
             // begin logging
             PacketLog pl = new PacketSignLog();
-            Enumeration<PacketParameter> e = parameters();
-            while (e.hasMoreElements()) {
-
-                PacketParameter parameter = e.nextElement();
-
+            for (PacketParameter parameter : parameters()) {
                 pl.setParameter(parameter.getName(), parameter.getValue());
 
             }
@@ -101,9 +95,7 @@ public class NordeaPaymentPacket extends Packet {
 
             // begin logging
             PacketLog pl = new PacketVerifyLog();
-            Enumeration<PacketParameter> e = parameters();
-            while (e.hasMoreElements()) {
-                PacketParameter parameter = e.nextElement();
+            for (PacketParameter parameter : parameters()) {
                 pl.setParameter(parameter.getName(), parameter.getValue());
             }
 
