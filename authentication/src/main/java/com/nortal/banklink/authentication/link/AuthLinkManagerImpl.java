@@ -21,7 +21,7 @@ import com.nortal.banklink.authentication.AuthLinkManager;
 import com.nortal.banklink.link.base.BankLinkManagerImpl;
 
 /**
- * AuthLink manager. Holds all authentication links and decides wich to use.
+ * AuthLink manager. Holds all authentication links and decides which to use.
  * 
  * @author <a href="mailto:toomas.parna@nortal.com">Toomas Pärna</a>
  */
