@@ -16,17 +16,14 @@
 package com.nortal.banklink.core.packet.param;
 
 import com.nortal.banklink.core.packet.InvalidParameterException;
-
-import lombok.ToString;
 import org.apache.commons.lang3.StringUtils;
 
 /**
  * 
- * Used for store time parammeter.
+ * Used for store time parameter.
  * 
  * @author Vladimir Tsastsin
  */
-@ToString
 public final class PacketTimeParameter extends PacketParameter {
 
     /**
