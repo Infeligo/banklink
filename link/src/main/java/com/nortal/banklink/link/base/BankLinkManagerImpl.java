@@ -21,9 +21,10 @@ import com.nortal.banklink.link.Bank;
 import com.nortal.banklink.link.BankLink;
 import com.nortal.banklink.link.BankLinkInfo;
 import com.nortal.banklink.link.BankLinkManager;
+
+import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.Map;
-import javax.servlet.http.HttpServletRequest;
 
 /**
  * @author <a href="mailto:toomas.parna@nortal.com">Toomas Pärna</a>
@@ -31,7 +32,7 @@ import javax.servlet.http.HttpServletRequest;
  */
 public class BankLinkManagerImpl<INFO extends BankLinkInfo, LINK extends BankLink<INFO>> implements BankLinkManager<INFO, LINK> {
     /** The banklinks. */
-    private Map<Bank, LINK> banklinks = new HashMap<>();
+    private Map<String, LINK> banklinks = new HashMap<>();
 
     /**
      * Sets the banklinks.
@@ -41,11 +42,15 @@ public class BankLinkManagerImpl<INFO extends BankLinkInfo, LINK extends BankLin
      */
     public void setBanklinks(LINK[] banklinks) {
         for (LINK banklink : banklinks)
-            this.banklinks.put(banklink.getBank(), banklink);
+            this.banklinks.put(banklink.getBank().name(), banklink);
     }
 
     public LINK getBankLink(Bank bank) {
-        return banklinks.get(bank);
+        return banklinks.get(bank.name());
+    }
+
+    public LINK getBankLink(String name) {
+        return banklinks.get(name);
     }
 
     public INFO getPacketInfo(HttpServletRequest req) {

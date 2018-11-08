@@ -16,6 +16,7 @@
 package com.nortal.banklink.link;
 
 import com.nortal.banklink.core.packet.Packet;
+
 import javax.servlet.http.HttpServletRequest;
 
 /**
@@ -27,12 +28,12 @@ import javax.servlet.http.HttpServletRequest;
 public interface BankLinkManager<INFO extends BankLinkInfo, LINK extends BankLink<INFO>> {
     /**
      * Gets the auth link.
-     * 
-     * @param bank
-     *            the bank
+     *
+     * @param name
+     *            the bank name
      * @return the auth link
      */
-    LINK getBankLink(Bank bank);
+    LINK getBankLink(String name);
 
     /**
      * Gets the packet info.

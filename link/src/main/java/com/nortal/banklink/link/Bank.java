@@ -25,7 +25,7 @@ import lombok.ToString;
  * 
  * @author <a href="mailto:siim.sundla@nortal.com">Siim Sundla</a>
  */
-@EqualsAndHashCode
+@EqualsAndHashCode(of = "name")
 @ToString(of = { "name", "protocol" })
 @RequiredArgsConstructor(staticName = "of")
 public class Bank {
