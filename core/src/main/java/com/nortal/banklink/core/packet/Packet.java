@@ -28,7 +28,7 @@ import com.nortal.banklink.core.packet.verify.PacketNonceVerifier;
 import com.nortal.banklink.core.packet.verify.PacketVerifier;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringEscapeUtils;
-import org.apache.log4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
@@ -128,7 +128,7 @@ public class Packet {
             }
             pl.setParameter("STRING", algorithm.getMacString(parameters()));
             pl.setParameter("SIGNATURE", MAC);
-            Logger.getLogger(pl.getClass()).debug(pl);
+            LoggerFactory.getLogger(pl.getClass()).debug(pl.toString());
             // end logging
             setParameter(getMacName(), MAC);
         } catch (Exception e) {
@@ -203,7 +203,7 @@ public class Packet {
 
         pl.setParameter("STRING", algorithm.getMacString(parameters()));
         pl.setParameter("RESULTCODE", (new Boolean(answer).toString()));
-        Logger.getLogger(pl.getClass()).debug(pl);
+        LoggerFactory.getLogger(pl.getClass()).debug(pl.toString());
         // end logging
     }
 
@@ -381,7 +381,7 @@ public class Packet {
         pl.setParameter("STRING", algorithm.getMacString(parameters()));
         pl.setParameter("CHANNEL", channel);
         pl.setParameter("DESTINATION", destination);
-        Logger.getLogger(pl.getClass()).debug(pl);
+        LoggerFactory.getLogger(pl.getClass()).debug(pl.toString());
         // end logging
     }
 

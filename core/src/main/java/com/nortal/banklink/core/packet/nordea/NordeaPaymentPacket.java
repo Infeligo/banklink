@@ -22,7 +22,7 @@ import com.nortal.banklink.core.log.PacketSignLog;
 import com.nortal.banklink.core.log.PacketVerifyLog;
 import com.nortal.banklink.core.packet.Packet;
 import com.nortal.banklink.core.packet.param.PacketParameter;
-import org.apache.log4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * The Class NordeaPaymentPacket.
@@ -65,7 +65,7 @@ public class NordeaPaymentPacket extends Packet {
 
             pl.setParameter("STRING", algorithm.getMacString(parameters()));
             pl.setParameter("SIGNATURE", macString);
-            Logger.getLogger(pl.getClass()).trace(pl);
+            LoggerFactory.getLogger(pl.getClass()).trace(pl.toString());
             // end logging
 
             setParameter(getMacName(), macString);
@@ -101,7 +101,7 @@ public class NordeaPaymentPacket extends Packet {
 
             pl.setParameter("STRING", algorithm.getMacString(parameters()));
             pl.setParameter("RESULTCODE", (new Boolean(answer).toString()));
-            Logger.getLogger(pl.getClass()).trace(pl);
+            LoggerFactory.getLogger(pl.getClass()).trace(pl.toString());
             // end logging
             return answer;
 
